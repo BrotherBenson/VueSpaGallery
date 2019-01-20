@@ -2,14 +2,24 @@
 <html>
     <head>
         <title>Vue Spa Gallery</title>
-        <!-- development version, includes helpful console warnings -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+        <!-- external libraries: vue, require -->
+        <script src="./scripts/external-libraries/vue.js"></script>
+        <script src="./scripts/external-libraries/require.js"></script>
     </head>
     <body>
-        Galleria.
-        
-        <div id="gallery">{{ message }}</div>
+        <div id="gallery">
+            {{ message }}
+        </div>
 
-        <script src="./gallery.js"></script>
+        <div id="click-counter" style="border: 1px solid black; width: 170px;">
+            <strong>Click Counter</strong>
+            <button v-on:click="addClick">Click</button>
+            <span>{{ clickCount }}</span>
+        </div>
+
+         <!-- vue components -->
+        <script src="./scripts/clickCounter.js"></script>
+        <script src="./scripts/gallery.js"></script>
     </body>
 </html>
