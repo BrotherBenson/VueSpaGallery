@@ -3,9 +3,10 @@
     <head>
         <title>Vue Spa Gallery</title>
         
-        <!-- external libraries: vue, require -->
+        <!-- external libraries: vue, require, underscore-->
         <script src="./scripts/external-libraries/vue.js"></script>
         <script src="./scripts/external-libraries/require.js"></script>
+        <script src="./scripts/external-libraries/_.js"></script>
     </head>
     <body>
         <div id="gallery">
@@ -18,7 +19,17 @@
             <span>{{ clickCount }}</span>
         </div>
 
+        <div id="login" style="border: 1px solid black; width: 170px;">
+            <strong>Login</strong>
+            <span>Username:</span> <input v-model="inputUserName" v-on:keyup="resetFormState"></input>
+            <span>Password:</span> <input v-model="inputPassword" v-on:keyup="resetFormState"></input>
+            <button v-on:click="clickLogin">Login</button>
+            <span v-if="resultError">Alert: Credentials are incorrect.</span>
+            <span v-if="resultSuccess">Login successful!</span>
+        </div>
+
          <!-- vue components -->
+        <script src="./scripts/login.js"></script>
         <script src="./scripts/clickCounter.js"></script>
         <script src="./scripts/gallery.js"></script>
     </body>
