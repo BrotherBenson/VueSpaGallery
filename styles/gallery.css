@@ -1,0 +1,5 @@
+/* these are styles specific to the gallery project */
+.app {
+    border: 1px solid grey;
+    padding-bottom: 10px !important;
+}

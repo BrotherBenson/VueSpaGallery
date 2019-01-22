@@ -3,29 +3,40 @@
     <head>
         <title>Vue Spa Gallery</title>
         
-        <!-- external libraries: vue, require, underscore-->
+        <!-- external libraries: vue, require, underscore, materialize -->
         <script src="./scripts/external-libraries/vue.js"></script>
         <script src="./scripts/external-libraries/require.js"></script>
         <script src="./scripts/external-libraries/_.js"></script>
+        <script src="./scripts/external-libraries/materialize.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./styles/materialize.css">
+        <link rel="stylesheet" type="text/css" href="./styles/gallery.css">
     </head>
+
     <body>
-        <div id="gallery">
-            {{ message }}
-        </div>
+        <div class="container">
+            <h1 class="center-align">Vue Spa Gallery</h1>
+            <div class="row">
+                <div id="click-counter" class="col s12 m6 app">
+                    <h5>Click Counter</h5>
+                    <button class="waves-effect waves-light btn"
+                        v-on:click="addClick">Click</button>
+                    <span>{{ clickCount }}</span>
+                </div>
 
-        <div id="click-counter" style="border: 1px solid black; width: 170px;">
-            <strong>Click Counter</strong>
-            <button v-on:click="addClick">Click</button>
-            <span>{{ clickCount }}</span>
-        </div>
+                <div id="login" class="col s12 m6 app">
+                    <h5>Login</h5>
+                    <span>Username:</span> <input v-model="inputUserName" v-on:keyup="resetFormState"></input>
+                    <span>Password:</span> <input v-model="inputPassword" v-on:keyup="resetFormState"></input>
 
-        <div id="login" style="border: 1px solid black; width: 170px;">
-            <strong>Login</strong>
-            <span>Username:</span> <input v-model="inputUserName" v-on:keyup="resetFormState"></input>
-            <span>Password:</span> <input v-model="inputPassword" v-on:keyup="resetFormState"></input>
-            <button v-on:click="clickLogin">Login</button>
-            <span v-if="resultError">Alert: Credentials are incorrect.</span>
-            <span v-if="resultSuccess">Login successful!</span>
+                    <button class="btn waves-effect waves-light"
+                        name="action"
+                        type="submit" 
+                        v-on:click="clickLogin">Login</button>
+                    <span v-if="resultError">Alert: Credentials are incorrect.</span>
+                    <span v-if="resultSuccess">Login successful!</span>
+                </div>
+            </div>
         </div>
 
          <!-- vue components -->
@@ -34,3 +45,4 @@
         <script src="./scripts/gallery.js"></script>
     </body>
 </html>
+
