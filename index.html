@@ -17,15 +17,15 @@
         <div class="container">
             <h1 class="center-align">Vue Spa Gallery</h1>
             <div class="row">
-                <div id="click-counter" class="col s12 m6 app">
-                    <h5>Click Counter</h5>
+                <div id="click-counter" class="col s12 m4 app">
+                    <h5 class="center-align">Click Counter</h5>
                     <button class="waves-effect waves-light btn"
                         v-on:click="addClick">Click</button>
                     <span>{{ clickCount }}</span>
                 </div>
 
-                <div id="login" class="col s12 m6 app">
-                    <h5>Login</h5>
+                <div id="login" class="col s12 m4 app">
+                    <h5 class="center-align">Login</h5>
                     <span>Username:</span> <input v-model="inputUserName" v-on:keyup="resetFormState"></input>
                     <span>Password:</span> <input v-model="inputPassword" v-on:keyup="resetFormState"></input>
 
@@ -36,13 +36,44 @@
                     <span v-if="resultError">Alert: Credentials are incorrect.</span>
                     <span v-if="resultSuccess">Login successful!</span>
                 </div>
+
+                <div id="rock-paper-scissors" class="col s12 m4 app">
+                    <div>
+                        <h5 class="center-align">Rock, Paper, Scissors</h5>
+                        <span>Click a button to play a game.</span>
+                    </div>
+                    <div>
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickChoice('rock')">Rock</button>
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickChoice('paper')">Paper</button>
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickChoice('scissors')">Scissors</button>
+                        <p>Last game: {{ lastGameResult }}</p>
+                    </div>
+                    <div>
+                        <h6 class="center-align">RESULTS</h6>
+                        <strong>Your Record</strong>
+                        <p>Wins: {{ userRecord.wins }}</p>
+                        <p>Losses: {{ userRecord.losses }}</p>
+                        <p>Draws: {{ userRecord.draws }}</p>
+                        <strong>Your Choices</strong>
+                        <p>Rock: {{ userHistory.rock }}</p>
+                        <p>Paper: {{ userHistory.paper }}</p>
+                        <p>Scissors: {{ userHistory.scissors }}</p>
+                        <strong>Computer Choices</strong>                         
+                        <p>Rock: {{ computerHistory.rock }}</p>
+                        <p>Paper: {{ computerHistory.paper }}</p>
+                        <p>Scissors: {{ computerHistory.scissors }}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
          <!-- vue components -->
         <script src="./scripts/login.js"></script>
         <script src="./scripts/clickCounter.js"></script>
-        <script src="./scripts/gallery.js"></script>
+        <script src="./scripts/rockPaperScissors.js"></script>
     </body>
 </html>
 
