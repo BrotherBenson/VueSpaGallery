@@ -18,24 +18,31 @@
             <div class="row">
                 <h4 class="center-align">Vue Spa Gallery</h4>
                 <!-- poker -->
-                <div id="poker" class="col s12 app">
-                    <h5 class="center-align">Poker</h5>
-                    <div class="center-align">
-                        <div v-for="playingCard in hand">
+            
+                <div id="poker" class="col s12 app center-align">
+                    <h5>Poker</h5>
+                    <div>
+                        <div v-for="playingCard in hand" style="display:inline-block; margin: 5px;">
                             <div class="card center-align valign-wrapper"
-                                v-on:click="clickCard"
-                                v-bind:class="selected : playingCard.isSelected">
-                                <div class="card-body grey">
-                                    Q
+                                v-on:click="playingCard.isSelected = !playingCard.isSelected"
+                                v-bind:class="{ selected : playingCard.isSelected }">
+                                <div class="card-body"
+                                    v-bind:class="[playingCard.color]">
+                                    {{ playingCard.face }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="center-align">
+
+                    <div class="payout-notifier"
+                        v-if="handComplete && handsPlayed != 0">
+                        {{ }}
+                    </div>
+                    <div>
                         <span>Bet: {{ bet }}</span>
                         <span>Chips: {{ chips }}</span>
                     </div>
-                    <div class="center-align">
+                    <div>
                         <button class="waves-effect waves-light btn"
                             v-on:click="clickDeal">Deal</button>
                         <button class="waves-effect waves-light btn"
