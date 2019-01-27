@@ -41,16 +41,17 @@ function colorCard(suit){
     }
 };
 
+var cards = [];
+
 // create a card based on each card-face combination and add it to cards
-cardFaces.forEach(function(cardFace){
-    suits.forEach(function(suit){
+suits.forEach(function(suit){
+    cardFaces.forEach(function(cardFace){
         cards.push({
-            suit: suit,
             color: colorCard(suit),
             face: cardFace.face, 
             faceValue: cardFace.faceValue,
             isSelected: false
-        })
+        });
     });
 });
 
@@ -133,18 +134,15 @@ var poker = new Vue({
 
             return newCards;
         },
-        payout: function(bet, handScore){
+        payout: function(bet, handscore){
             if (bet == null || bet == undefined){
                 throw 'bet error';
             }
-            if (handScore == null || handScore == undefined){
+            if (handscore == null || handscore == undefined){
                 throw 'hand error'
             }
-            
-            var payoutAmount = this.chips + (bet * handScore);
 
-            this.handResult.payoutAmount = payoutAmount;
-            this.chips = payoutAmount;
+            this.chips = this.chips + (bet * handscore);
         },
         scoreHand: function(){
             var faces = _.pluck(this.hand, 'face');
@@ -260,13 +258,13 @@ var poker = new Vue({
                     if (countFace(face) === 4){
                         return {
                             label: 'Four of a Kind',
-                            payoutMultiplier: 4
+                            payoutMultiplier: 25
                         }
                     }
                 });
                 return {
                     label: 'Full House',
-                    payoutMultiplier: 4
+                    payoutMultiplier: 9
                 }
             }
             return {
