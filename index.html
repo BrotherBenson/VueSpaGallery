@@ -15,16 +15,38 @@
 
     <body>
         <div class="container">
-            <h1 class="center-align">Vue Spa Gallery</h1>
             <div class="row">
-                <div id="click-counter" class="col s12 m4 app">
-                    <h5 class="center-align">Click Counter</h5>
-                    <button class="waves-effect waves-light btn"
-                        v-on:click="addClick">Click</button>
-                    <span>{{ clickCount }}</span>
+                <h4 class="center-align">Vue Spa Gallery</h4>
+                <!-- poker -->
+                <div id="poker" class="col s12 app">
+                    <h5 class="center-align">Poker</h5>
+                    <div class="center-align">
+                        <div v-for="playingCard in hand">
+                            <div class="card center-align valign-wrapper"
+                                v-on:click="clickCard"
+                                v-bind:class="selected : playingCard.isSelected">
+                                <div class="card-body grey">
+                                    Q
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-align">
+                        <span>Bet: {{ bet }}</span>
+                        <span>Chips: {{ chips }}</span>
+                    </div>
+                    <div class="center-align">
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickDeal">Deal</button>
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickBetIncrease">Increase Bet</button>
+                        <button class="waves-effect waves-light btn"
+                            v-on:click="clickBetDecrease">Decrease Bet</button>
+                    </div>
                 </div>
 
-                <div id="login" class="col s12 m4 app">
+                <!-- login --> 
+                <div id="login" class="app col s12 m6">
                     <h5 class="center-align">Login</h5>
                     <span>Username:</span> <input v-model="inputUserName" v-on:keyup="resetFormState"></input>
                     <span>Password:</span> <input v-model="inputPassword" v-on:keyup="resetFormState"></input>
@@ -37,9 +59,18 @@
                     <span v-if="resultSuccess">Login successful!</span>
                 </div>
 
-                <div id="rock-paper-scissors" class="col s12 m4 app">
+                <!-- click counter -->
+                <div id="click-counter" class="app col s12 m6">
+                    <h5 class="center-align">Click Counter</h5>
+                    <button class="waves-effect waves-light btn"
+                        v-on:click="addClick">Click</button>
+                    <span>{{ clickCount }}</span>
+                </div>
+
+                <!-- rock paper scissors -->
+                <div id="rock-paper-scissors" class="col s12 m6 app center-align">
                     <div>
-                        <h5 class="center-align">Rock, Paper, Scissors</h5>
+                        <h5>Rock, Paper, Scissors</h5>
                         <span>Click a button to play a game.</span>
                     </div>
                     <div>
@@ -52,7 +83,7 @@
                         <p>Last game: {{ lastGameResult }}</p>
                     </div>
                     <div>
-                        <h6 class="center-align">RESULTS</h6>
+                        <h6>RESULTS</h6>
                         <strong>Your Record</strong>
                         <p>Wins: {{ userRecord.wins }}</p>
                         <p>Losses: {{ userRecord.losses }}</p>
@@ -74,6 +105,7 @@
         <script src="./scripts/login.js"></script>
         <script src="./scripts/clickCounter.js"></script>
         <script src="./scripts/rockPaperScissors.js"></script>
+        <script src="./scripts/poker.js"></script>
     </body>
 </html>
 

@@ -3,3 +3,21 @@
     border: 1px solid grey;
     padding-bottom: 10px !important;
 }
+
+.card {
+    user-select: none;
+    border: 1px solid grey;
+    display: inline-block;
+    font-size: 48px;
+    width: 70px;
+}
+
+.card-body{
+    margin: 5px;
+    height: 80px;
+    width: 58px;
+}
+
+.selected { 
+    background-color: red;
+}
