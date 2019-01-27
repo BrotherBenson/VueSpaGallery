@@ -23,14 +23,9 @@
                     <h5>Poker</h5>
                     <div>
                         <div v-for="playingCard in hand" style="display:inline-block; margin: 5px;">
-                            <div class="card center-align valign-wrapper"
-                                v-on:click="playingCard.isSelected = !playingCard.isSelected"
-                                v-bind:class="{ selected : playingCard.isSelected }">
-                                <div class="card-body"
-                                    v-bind:class="[playingCard.color]">
-                                    {{ playingCard.face }}
-                                </div>
-                            </div>
+                            <card v-bind:color="playingCard.color"
+                                v-bind:face="playingCard.face"
+                                v-bind:isSelected="playingCard.isSelected"></card>
                         </div>
                     </div>
 

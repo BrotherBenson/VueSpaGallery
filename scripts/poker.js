@@ -4,8 +4,15 @@ Vue.component('card', {
             this.isSelected = !this.isSelected;
         }
     },
-    props: ['color', 'face', 'selected'],
-    template: '<div class="card {{ color }}" v-bind:class="selected: selected" v-on:click="clickCard">{{ card.face }}</div>'
+    props: ['color', 'face', 'isSelected'],
+    template: `<div class="card center-align valign-wrapper"
+        v-on:click="isSelected = !isSelected"
+        v-bind:class="{ selected : isSelected }">
+        <div class="card-body"
+            v-bind:class="[color]">
+            {{ face }}
+        </div>
+    </div>`
 })
 
 const cardFaces = [
